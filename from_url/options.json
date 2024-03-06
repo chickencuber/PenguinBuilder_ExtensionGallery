@@ -1,0 +1,6 @@
+{
+    "creator": "built-in",
+    "potential-danger": true,
+    "display-name": "Import from URL",
+    "description": "Imports an extension from a url"
+}
