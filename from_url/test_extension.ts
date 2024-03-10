@@ -24,3 +24,5 @@ class Test implements PenguinExtension {
         }
     }
 }
+
+Penguin.LoadExtension(Test);
