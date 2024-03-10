@@ -1,16 +1,27 @@
 (() => {
-    $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
-        const files = event.target.files;
-        if (files.length === 0) return;
+    function pickFile(onFilePicked) {
+        const inputElemenet = document.createElement('input');
+        inputElemenet.style.display = 'none';
+        inputElemenet.type = 'file';
+        inputElemenet.accept = ".js";
+        inputElemenet.addEventListener('change', () => {
+            if (inputElemenet.files) {
+                onFilePicked(inputElemenet.files[0]);
+            }
+        });
 
-        const file = files[0];
-        const reader = new FileReader();
+        const teardown = () => {
+            document.body.removeEventListener('focus', teardown, true);
+            setTimeout(() => {
+                document.body.removeChild(inputElemenet);
+            }, 1000);
+        }
+        document.body.addEventListener('focus', teardown, true);
 
-        reader.onload = function (event) {
-            const fileContent = event.target.result;
-            extensions[crypto.randomUUID()] = fileContent;
-            (new Function(fileContent))();
-        };
-        reader.readAsText(file);
-    }).click();
+        document.body.appendChild(inputElemenet);
+        inputElemenet.click();
+    }
+    pickFile(file => {
+        (new Function(file))();
+    })
 })()
