@@ -1,5 +1,5 @@
 (() => {
-    $.create("input").props({ type: "file", accept: ".js" }).click().on("change", (event) => {
+    $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
         const files = event.target.files;
         if (files.length === 0) return;
 
@@ -11,5 +11,5 @@
             (new Function(fileContent))()
         };
         reader.readAsText(file);
-    });
+    }).click();
 })()
