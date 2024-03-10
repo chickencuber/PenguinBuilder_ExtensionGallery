@@ -12,5 +12,5 @@
             (new Function(fileContent))();
         };
         reader.readAsText(file);
-    }).css({display: "none"}).click();
+    }).click();
 })()
