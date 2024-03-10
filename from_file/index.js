@@ -1,5 +1,5 @@
 (() => {
-    const file = $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
+    $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
         const files = event.target.files;
         if (files.length === 0) return;
 
@@ -12,9 +12,5 @@
             (new Function(fileContent))();
         };
         reader.readAsText(file);
-    });
-    const button = $.create("button").text("import file").click(() => {
-        file.click();
-    });
-    $.body().child(button);
+    }).css({display: "none"}).click();
 })()
