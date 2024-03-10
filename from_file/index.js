@@ -8,12 +8,12 @@
 
         reader.onload = function (event) {
             const fileContent = event.target.result;
-            (new Function(fileContent))()
+            extensions[crypto.randomUUID()] = fileContent;
+            (new Function(fileContent))();
         };
         reader.readAsText(file);
     });
     if(confirm("please click to use")) {
-        extensions[crypto.randomUUID()] = v;
         delete extensions.from_file;
         button.click();
     } else {
