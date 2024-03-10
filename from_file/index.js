@@ -16,5 +16,5 @@
     const button = $.create("button").text("import file").click(() => {
         file.click();
     });
-    $.body().child($.create("dialog").child(button));
+    $.body().child(button);
 })()
