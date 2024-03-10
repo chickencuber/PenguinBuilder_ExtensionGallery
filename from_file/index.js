@@ -1,5 +1,5 @@
 (() => {
-    const button = $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
+    const file = $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
         const files = event.target.files;
         if (files.length === 0) return;
 
@@ -13,10 +13,8 @@
         };
         reader.readAsText(file);
     });
-    if(confirm("please click to use")) {
-        delete extensions.from_file;
-        button.click();
-    } else {
-        delete extensions.from_file;
-    }
+    const button = $.create("button").text("import file").click(() => {
+        file.click();
+    });
+    $.body().child($.create("dialog").child(button));
 })()
