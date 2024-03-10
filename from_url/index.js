@@ -1,9 +1,5 @@
-const url = prompt("url of extension");
-
-(async () => {
-    const content = await (await fetch(url)).text();
-    const id = window.crypto.randomUUID();
-    extensions[id] = content;
+fetch(prompt("url")).then(v => v.text().then(v => {
+    extensions[crypto.randomUUID()] = v;
     delete extensions.from_url;
-    (new Function(content))();
-})()
+    (new Function(v))();
+}))
