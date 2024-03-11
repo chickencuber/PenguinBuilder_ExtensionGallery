@@ -1,5 +1,5 @@
-(() => {
-    const file = $.create("input").props({ type: "file", accept: ".js" }).on("change", (event) => {
+return new Promise(r => {
+    $.create("input").props({accept: ".js", type: "file"}).on("change", (event) => {
         const files = event.target.files;
         if (files.length === 0) return;
 
@@ -8,8 +8,8 @@
 
         reader.onload = function (event) {
             const fileContent = event.target.result;
-            (new Function(fileContent))()
+            r(fileContent)
         };
         reader.readAsText(file);
     });
-})()
+})
