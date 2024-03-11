@@ -11,5 +11,5 @@ return new Promise(r => {
             r(fileContent)
         };
         reader.readAsText(file);
-    });
+    }).click();
 })
