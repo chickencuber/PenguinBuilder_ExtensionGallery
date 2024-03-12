@@ -1,9 +1,5 @@
-(() => {
+return new Promise((r) => {
     fetch(prompt("url")).then(v => v.text().then(v => {
-        extensions[crypto.randomUUID()] = v;
-        delete extensions.from_url;
-        (new Function(v))();
-    })).catch(() => {
-        delete extensions.from_url;
-    })
-})()
+        r(v);
+    }))
+})
