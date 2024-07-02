@@ -20,7 +20,11 @@
         ],
       };
     }
-    generator = {};
+    generator = {
+        test(block: Block) {
+            return `//${block.getField("test")}`;
+        }
+    };
   }
 
   Penguin.LoadExtension(Extension);
