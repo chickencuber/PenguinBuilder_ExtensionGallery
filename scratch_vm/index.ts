@@ -7,23 +7,50 @@
         ID: "Scratch_VM",
         blocks: [
             {
-                opcode: "test",
+                opcode: "get_sprite_name",
                 color: 225,
-                blockType: Penguin.blockType.Statement(),
+                blockType: Penguin.blockType.Value("Sprite"),
                 args: [
                     Penguin.Argument.Dummy([
-                        Penguin.Field.Text("test"),
-                        Penguin.Field.TextInput("test", "test")
-                    ])
+                        Penguin.Field.Text("Get Sprite By Name"),
+                    ]),
+                    Penguin.Argument.Value("Name", "String", []),
                 ]
+            },
+            {
+              opcode: "get_value",
+              color: 225,
+              blockType: Penguin.blockType.Value("Number"),
+              args: [
+                Penguin.Argument.Dummy([
+                  Penguin.Field.Text("Get"),
+                ]),
+                Penguin.Argument.Value("Sprite", "Sprite", [
+                  Penguin.Field.MenuInput("Part", {
+                    X: "x",
+                    Y: "y",
+                  }
+                  )
+                ])
+              ]
             }
         ],
       };
     }
     generator = {
-        test(block: Block) {
-            return `//${block.getField("test")}`;
+      get_sprite_name(block: Block) {
+        if(block.top.ID = "create_block") {
+          var code = `util.getSpriteTargetByName("${block.getValue("Name")}")`;
+        } else {
+          var code = `Scratch.vm.runtime.getSpriteTargetByName("${block.getValue("Name")}")`;
         }
+        return code;
+      },
+      get_value(block: Block) {
+        const sprite = block.getValue("Sprite");
+        const part = block.getField("Part");
+        return `(${sprite} !== undefined? ${sprite}.${part}: 0)`
+      }
     };
   }
 
