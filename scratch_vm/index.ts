@@ -36,6 +36,7 @@
     }
     generator = {
       get_sprite_name(block: Block) {
+        console.log(block.top);
         if ((block.top.ID === "create_block")) {
           var code = `util.getSpriteTargetByName("${block.getValue("Name")}")`;
         } else {
