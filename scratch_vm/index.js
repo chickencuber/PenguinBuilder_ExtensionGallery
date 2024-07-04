@@ -4,11 +4,11 @@
         constructor() {
             this.generator = {
                 get_sprite_name(block) {
-                    if ((block.top.ID === "create_block")) {
-                        var code = `util.getSpriteTargetByName("${block.getValue("Name")}")`;
+                    if (block.top.ID === "create_block") {
+                        var code = `util.getSpriteTargetByName(${block.getValue("Name")})`;
                     }
                     else {
-                        var code = `Scratch.vm.runtime.getSpriteTargetByName("${block.getValue("Name")}")`;
+                        var code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue("Name")})`;
                     }
                     return code;
                 },
