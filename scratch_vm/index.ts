@@ -22,14 +22,14 @@
             color: 225,
             blockType: Penguin.blockType.Value("Number"),
             args: [
-              Penguin.Argument.Dummy([Penguin.Field.Text("Get")]),
-              Penguin.Argument.Value("Sprite", "Sprite", []),
-              Penguin.Argument.Dummy([
+              Penguin.Argument.Dummy([Penguin.Field.Text("Get"),
                 Penguin.Field.MenuInput("Part", {
                   X: "x",
                   Y: "y",
                 }),
+                Penguin.Field.Text("of")
               ]),
+              Penguin.Argument.Value("Sprite", "Sprite", []),
             ],
           },
         ],
