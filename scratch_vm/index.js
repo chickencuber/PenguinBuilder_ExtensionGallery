@@ -4,7 +4,7 @@
         constructor() {
             this.generator = {
                 get_sprite_name(block) {
-                    if (block.top.ID = "create_block") {
+                    if ((block.top.ID = "create_block")) {
                         var code = `util.getSpriteTargetByName("${block.getValue("Name")}")`;
                     }
                     else {
@@ -16,7 +16,7 @@
                     const sprite = block.getValue("Sprite");
                     const part = block.getField("Part");
                     return `(${sprite} !== undefined? ${sprite}.${part}: 0)`;
-                }
+                },
             };
         }
         Info() {
@@ -34,24 +34,23 @@
                                 Penguin.Field.Text("Get Sprite By Name"),
                             ]),
                             Penguin.Argument.Value("Name", "String", []),
-                        ]
+                        ],
                     },
                     {
                         opcode: "get_value",
                         color: 225,
                         blockType: Penguin.blockType.Value("Number"),
                         args: [
-                            Penguin.Argument.Dummy([
-                                Penguin.Field.Text("Get"),
-                            ]),
-                            Penguin.Argument.Value("Sprite", "Sprite", [
+                            Penguin.Argument.Dummy([Penguin.Field.Text("Get"),
                                 Penguin.Field.MenuInput("Part", {
                                     X: "x",
                                     Y: "y",
-                                })
-                            ])
-                        ]
-                    }
+                                }),
+                                Penguin.Field.Text("of")
+                            ]),
+                            Penguin.Argument.Value("Sprite", "Sprite", []),
+                        ],
+                    },
                 ],
             };
         }
