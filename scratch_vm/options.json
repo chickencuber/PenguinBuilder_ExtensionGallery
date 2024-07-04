@@ -1,6 +1,7 @@
 {
     "creator": "built-in",
     "potential-danger": false,
-    "display-name": "Scratch VM(WIP)",
-    "description": "Blocks to interact with scratch vm"
+    "display-name": "Scratch VM",
+    "description": "Blocks to interact with scratch vm",
+    "WIP": true
 }
