@@ -36,13 +36,9 @@
     }
     generator = {
       get_sprite_name(block: Block) {
-        if (block.top.ID === "create_block") {
-          var code = `util.getSpriteTargetByName(${block.getValue("Name")})`;
-        } else {
-          var code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue(
-            "Name"
-          )})`;
-        }
+        const code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue(
+          "Name"
+        )})`;
         return code;
       },
       get_value(block: Block) {
