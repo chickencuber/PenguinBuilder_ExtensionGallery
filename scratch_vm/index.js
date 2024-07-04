@@ -4,7 +4,7 @@
         constructor() {
             this.generator = {
                 get_sprite_name(block) {
-                    if ((block.top.ID = "create_block")) {
+                    if ((block.top.ID === "create_block")) {
                         var code = `util.getSpriteTargetByName("${block.getValue("Name")}")`;
                     }
                     else {
