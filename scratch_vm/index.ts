@@ -26,6 +26,7 @@
                 Penguin.Field.MenuInput("Part", {
                   X: "x",
                   Y: "y",
+                  Direction: "direction"
                 }),
                 Penguin.Field.Text("of"),
               ]),
