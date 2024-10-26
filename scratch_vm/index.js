@@ -3,6 +3,9 @@
     class Extension {
         constructor() {
             this.generator = {
+                is_stage(block) {
+                    return `(${block.getValue("sprite")} !== undefined ? ${block.getValue("sprite")}.isStage : false)`;
+                },
                 get_sprite(block) {
                     if (block.getField("type") === "Stage")
                         return "Scratch.vm.runtime._stageTarget";
@@ -69,6 +72,20 @@
                             ]),
                         ],
                     },
+                    {
+                        opcode: "is_stage",
+                        color: 225,
+                        blockType: Penguin.blockType.Value("Boolean"),
+                        args: [
+                            Penguin.Argument.Dummy([
+                                Penguin.Field.Text("is"),
+                            ]),
+                            Penguin.Argument.Value("sprite", "Sprite", []),
+                            Penguin.Argument.Dummy([
+                                Penguin.Field.Text("stage"),
+                            ]),
+                        ]
+                    }
                 ],
             };
         }
