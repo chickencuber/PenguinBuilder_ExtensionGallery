@@ -3,6 +3,15 @@
     class Extension {
         constructor() {
             this.generator = {
+                get_sprite(block) {
+                    if (block.getField("type") === "Stage")
+                        return "Scratch.vm.runtime._stageTarget";
+                    if (block.top.ID !== "create_block") {
+                        alert("Error: 'get current sprite' requires the 'create block' block");
+                        throw new Error("'get current sprite' requires the 'create block' block");
+                    }
+                    return "util.target";
+                },
                 get_sprite_name(block) {
                     const code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue("Name")})`;
                     return code;
@@ -43,6 +52,20 @@
                                     Direction: "direction"
                                 }),
                                 Penguin.Field.Text("of"),
+                            ]),
+                        ],
+                    },
+                    {
+                        opcode: "get_sprite",
+                        color: 225,
+                        blockType: Penguin.blockType.Value("Sprite"),
+                        args: [
+                            Penguin.Argument.Dummy([
+                                Penguin.Field.Text("get"),
+                                Penguin.Field.MenuInput("type", [
+                                    "Stage",
+                                    "Current Sprite",
+                                ]),
                             ]),
                         ],
                     },
