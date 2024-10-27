@@ -47,16 +47,6 @@
                         ],
                     },
                     {
-                        opcode: "get_all_sprites",
-                        color: 225,
-                        blockType: Penguin.blockType.Value("Array"),
-                        args: [
-                            Penguin.Argument.Dummy([
-                                Penguin.Field.Text("get all sprites"),
-                            ]),
-                        ],
-                    },
-                    {
                         opcode: "is_stage",
                         color: 225,
                         blockType: Penguin.blockType.Value("Boolean"),
@@ -74,9 +64,6 @@
             };
         }
         generator = {
-            get_all_sprites() {
-                return "Scratch.vm.runtime._stageTarget.sprites";
-            },
             is_stage(block: Block) {
                 return `(${block.getValue("sprite")} !== undefined ? ${block.getValue("sprite")}.isStage : false)`
             },
