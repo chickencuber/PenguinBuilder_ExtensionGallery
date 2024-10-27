@@ -3,6 +3,9 @@
     class Extension {
         constructor() {
             this.generator = {
+                get_all_sprite() {
+                    return "Scratch.vm.runtime._stageTarget.sprites";
+                },
                 is_stage(block) {
                     return `(${block.getValue("sprite")} !== undefined ? ${block.getValue("sprite")}.isStage : false)`;
                 },
@@ -69,6 +72,16 @@
                                     "Stage",
                                     "Current Sprite",
                                 ]),
+                            ]),
+                        ],
+                    },
+                    {
+                        opcode: "get_all_sprites",
+                        color: 225,
+                        blockType: Penguin.blockType.Value("Array"),
+                        args: [
+                            Penguin.Argument.Dummy([
+                                Penguin.Field.Text("get all sprites"),
                             ]),
                         ],
                     },
