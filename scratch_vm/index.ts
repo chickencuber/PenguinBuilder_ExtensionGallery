@@ -74,7 +74,7 @@
             };
         }
         generator = {
-            get_all_sprite() {
+            get_all_sprites() {
                 return "Scratch.vm.runtime._stageTarget.sprites";
             },
             is_stage(block: Block) {
