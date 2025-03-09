@@ -1,13 +1,6 @@
 "use strict";
 (() => {
     class Extension {
-        constructor() {
-            this.generator = {
-                test(block) {
-                    return `//${block.getField("test")}`;
-                }
-            };
-        }
         Info() {
             return {
                 name: "Example",
@@ -28,6 +21,11 @@
                 ],
             };
         }
+        generator = {
+            test(block) {
+                return `//${block.getField("test")}`;
+            }
+        };
     }
     Penguin.LoadExtension(Extension);
 })();

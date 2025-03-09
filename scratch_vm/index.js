@@ -1,31 +1,6 @@
 "use strict";
 (() => {
     class Extension {
-        constructor() {
-            this.generator = {
-                is_stage(block) {
-                    return `(${block.getValue("sprite")} !== undefined ? ${block.getValue("sprite")}.isStage : false)`;
-                },
-                get_sprite(block) {
-                    if (block.getField("type") === "Stage")
-                        return "Scratch.vm.runtime._stageTarget";
-                    if (block.top.ID !== "create_block") {
-                        alert("Error: 'get current sprite' requires the 'create block' block");
-                        throw new Error("'get current sprite' requires the 'create block' block");
-                    }
-                    return "util.target";
-                },
-                get_sprite_name(block) {
-                    const code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue("Name")})`;
-                    return code;
-                },
-                get_value(block) {
-                    const sprite = block.getValue("Sprite");
-                    const part = block.getField("Part");
-                    return `(${sprite} !== undefined? ${sprite}.${part}: 0)`;
-                },
-            };
-        }
         Info() {
             return {
                 name: "Scratch Vm",
@@ -89,6 +64,29 @@
                 ],
             };
         }
+        generator = {
+            is_stage(block) {
+                return `(${block.getValue("sprite")} !== undefined ? ${block.getValue("sprite")}.isStage : false)`;
+            },
+            get_sprite(block) {
+                if (block.getField("type") === "Stage")
+                    return "Scratch.vm.runtime._stageTarget";
+                if (block.top.ID !== "create_block") {
+                    alert("Error: 'get current sprite' requires the 'create block' block");
+                    throw new Error("'get current sprite' requires the 'create block' block");
+                }
+                return "util.target";
+            },
+            get_sprite_name(block) {
+                const code = `Scratch.vm.runtime.getSpriteTargetByName(${block.getValue("Name")})`;
+                return code;
+            },
+            get_value(block) {
+                const sprite = block.getValue("Sprite");
+                const part = block.getField("Part");
+                return `(${sprite} !== undefined? ${sprite}.${part}: 0)`;
+            },
+        };
     }
     Penguin.LoadExtension(Extension);
 })();
